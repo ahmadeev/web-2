@@ -1,5 +1,7 @@
 package servlets;
 
+import utils.Point;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,12 +21,28 @@ public class AreaCheckServlet extends HttpServlet {
         processRequest(request, response);
     }
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        //принтер для теста
         response.setContentType("text/html");
-        // Hello
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>" + "message" + "</h1>");
+        out.println("<h1>" + "meow" + "</h1>");
         out.println("</body></html>");
         out.close();
+
+//        try {
+//            int x = Integer.parseInt(request.getParameter("xType"));
+//            double y = getDouble(request, "yType");
+//            int r = Integer.parseInt(request.getParameter("RType"));
+//            Point point = new Point(x, y, r);
+//
+//        } catch (Exception e) {
+//
+//        }
+    }
+
+    public static double getDouble(HttpServletRequest request, String inputParameter) {
+        String parameter = request.getParameter(inputParameter);
+        return Double.parseDouble(parameter.replace(",", "."));
     }
 }
