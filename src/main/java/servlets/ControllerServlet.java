@@ -11,9 +11,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import static servlets.AreaCheckServlet.getDouble;
+import beans.Results;
 
 @WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
+    Results results;
+
+    public ControllerServlet() {
+        results = new Results();
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -57,21 +64,29 @@ public class ControllerServlet extends HttpServlet {
 //            out.println("<h1>" + "2" + "</h1>");
 //        }
 //        out.println("</body></html>");
+        ServletContext context = getServletContext();
+        if (context.getAttribute("results") == null) {
+            getServletContext().setAttribute("results", results);
+        }
+
         try {
             if (request.getParameter("xType") != null && request.getParameter("yType") != null && request.getParameter("RType") != null) {
                 if (getDouble(request, "yType") >= -5 && getDouble(request, "yType") <= 3) {
-                    ServletContext servletContext = getServletContext();
-                    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/areaCheck");
-                    requestDispatcher.forward(request, response);
+//                    ServletContext servletContext = getServletContext();
+//                    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/areaCheck");
+//                    requestDispatcher.forward(request, response);
+                    reqForwarding(request, response,"/areaCheck");
                 } else {
-                    ServletContext servletContext = getServletContext();
-                    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/index.jsp");
-                    requestDispatcher.forward(request, response);
+//                    ServletContext servletContext = getServletContext();
+//                    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/index.jsp");
+//                    requestDispatcher.forward(request, response);
+                    reqForwarding(request, response,"/index.jsp");
                 }
             } else {
-                ServletContext servletContext = getServletContext();
-                RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/index.jsp");
-                requestDispatcher.forward(request, response);
+//                ServletContext servletContext = getServletContext();
+//                RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/index.jsp");
+//                requestDispatcher.forward(request, response);
+                reqForwarding(request, response,"/index.jsp");
             }
         } catch (Exception e) {
             sendError(response, e.toString());
@@ -90,5 +105,11 @@ public class ControllerServlet extends HttpServlet {
 
         response.setContentType("application/text");
         response.getWriter().write(errorMessage);
+    }
+
+    private void reqForwarding(HttpServletRequest request, HttpServletResponse response, String address) throws ServletException, IOException {
+        ServletContext servletContext = getServletContext();
+        RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(address);
+        requestDispatcher.forward(request, response);
     }
 }

@@ -14,32 +14,38 @@
     <title>result table</title>
 </head>
 <body>
-
-<div id="contentCenter">
-    <table align="center" id="resultTable">
-        <thead>
-        <tr>
-            <th style="width:40px">x</th>
-            <th style="width:40px">y</th>
-            <th style="width:40px">R</th>
-            <th style="width:80px">Hit</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>${result.getX()}</td>
-            <td>${result.getY()}</td>
-            <td>${result.getR()}</td>
-            <td>${result.isHit()}</td>
-        </tr>
-        </tbody>
-    </table>
+<div id="container">
+    <div id="mainContent">
+        <div align="center" id="contentCenter">
+            <table align="center" id="resultTable">
+                <thead>
+                <tr>
+                    <th style="width:40px">x</th>
+                    <th style="width:40px">y</th>
+                    <th style="width:40px">R</th>
+                    <th style="width:80px">Hit</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>${result.getX()}</td>
+                    <td>${result.getY()}</td>
+                    <td>${result.getR()}</td>
+                    <td>${result.isResult()}</td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="index.jsp">back</a>
+        </div>
+    </div>
 </div>
+
+
 
 <%
     ServletContext context = request.getServletContext();
     request.setAttribute("results", context.getAttribute("results"));
 %>
-<a href="index.jsp">Exit</a>
+
 </body>
 </html>
