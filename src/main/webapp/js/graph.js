@@ -59,6 +59,7 @@ svg.addEventListener('click', (event) => {
             data: data,
             success: function(data){
                 alert(data);
+                return $('html').html(data);
             }
         });
     }

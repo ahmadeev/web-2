@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,6 +71,17 @@
         <th style="width:80px">Hit</th>
       </tr>
       </thead>
+      <tbody>
+      <jsp:useBean id="results" scope="application" class="beans.Results"/>
+      <c:forEach var="hit" items="${results.getResults()}">
+        <tr>
+          <td class="result">${hit.getX()}</td>
+          <td class="result">${hit.getY()}</td>
+          <td class="result">${hit.getR()}</td>
+          <td class="result">${hit.isResult()}</td>
+        </tr>
+      </c:forEach>
+      </tbody>
     </table>
   </div>
 </div>
@@ -85,6 +97,9 @@
 
     const dots = document.querySelectorAll('.target-dot');
     dots.forEach(dot => {dot.remove()})
+
+    const results = document.querySelectorAll('.result');
+    results.forEach(result => {result.remove()})
   }
 </script>
 </body>
