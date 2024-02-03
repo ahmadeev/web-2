@@ -28,6 +28,7 @@ public class AreaCheckServlet extends HttpServlet {
         out.println("<html><body>");
         out.println("<h1>" + "meow" + "</h1>");
         out.println("</body></html>");
+        out.println("<a href=\"index.jsp\">back to main page</a>");
         out.close();
 
 //        try {
