@@ -28,7 +28,7 @@ function drawDot(x, y, byClick) {
             var xToSend = (x - 125)/ (80 / R)
             var yToSend = (y - 125)/(-(80 / R))
         }
-        if (yToSend < -5 || yToSend > 3) {
+        if (!yValueCheck(yToSend)) {
             alert('y has to be greater than -5 and less than 3!')
         }
         else {
@@ -48,20 +48,35 @@ svg.addEventListener('click', (event) => {
     var svgx = event.clientX - div.offsetLeft - 25
     var svgy = event.clientY - div.offsetTop - 25
     //alert("x: " + svgx + ", y: " + svgy)
-    drawDot(svgx, svgy, true)
-
     let R = form.querySelector('input[name="RType"]:checked').value;
-    var data = {'xType':(svgx - 125)/ (80 / R), 'yType':(svgy - 125)/(-(80 / R)), 'RType':R};
-    $.ajax({
-        url: 'controller',
-        method: 'post',
-        dataType: 'html',
-        data: data,
-        success: function(data){
-            alert(data);
-        }
-    });
+    drawDot(svgx, svgy, true)
+    if (yValueCheck((svgy - 125)/(-(80 / R)))) {
+        var data = {'xType':(svgx - 125)/ (80 / R), 'yType':(svgy - 125)/(-(80 / R)), 'RType':R};
+        $.ajax({
+            url: 'controller',
+            method: 'post',
+            dataType: 'html',
+            data: data,
+            success: function(data){
+                alert(data);
+            }
+        });
+    }
+
     //alert('xType: ' + (svgx - 125)/20 + ', yType: ' + (svgy - 125) / (-20) + ', RType: ' + R)
 })
 
+// function submitButton() {
+//     const submitButton = form.querySelector('#submitButton');
+//     let xInput = form.getElementById('xInput').value;
+//     let yInput = form.querySelector('[name="yType"]').value;
+//
+//     submitButton.onclick = function() {drawDot(xInput, yInput, false)}
+// }
+
+// $("#form").on("submit", function(){
+//     //event.preventDefault();
+//     submitButton();
+//     alert('не проблема')
+// });
 

@@ -15,7 +15,8 @@
   <div class="mainContent">
     <div id="contentLeft">
       <a href="controller">--1--</a><br>
-      <a href="areaCheck">--2--</a>
+      <a href="areaCheck">--2--</a><br>
+      <a href="result.jsp">--0--</a>
       <form action="controller" method="post" id="form">
         <div class="formLine"><label>x value:</label></div>
         <div class="formLine">
@@ -79,7 +80,7 @@
 </script>
 <script>
   function disableButton() {
-    var submitButton = form.querySelector('#submitButton');
+    let submitButton = form.querySelector('#submitButton');
     submitButton.setAttribute("disabled", "")
 
     const dots = document.querySelectorAll('.target-dot');
