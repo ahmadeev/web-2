@@ -57,7 +57,6 @@ public class ControllerServlet extends HttpServlet {
 //            out.println("<h1>" + "2" + "</h1>");
 //        }
 //        out.println("</body></html>");
-
         try {
             if (request.getParameter("xType") != null && request.getParameter("yType") != null && request.getParameter("RType") != null) {
                 if (getDouble(request, "yType") >= -5 && getDouble(request, "yType") <= 3) {
