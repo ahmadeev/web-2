@@ -14,7 +14,7 @@ let div = document.querySelector("#contentRight")
     dot.setAttributeNS(null, 'style', 'fill: white; stroke: black;');
     svg.appendChild(dot);
 })*/
-function drawDot(x, y, byClick) {
+/*function drawDot(x, y, byClick) {
     let svg = document.querySelector('svg')
     let R = form.querySelector('input[name="RType"]:checked').value
     let isRSet = R == null ? false : true
@@ -42,9 +42,35 @@ function drawDot(x, y, byClick) {
         }
     }
 
+}*/
+
+function drawDot(x, y, isHit, byClick) {
+    let svg = document.querySelector('svg')
+    let R = form.querySelector('input[name="RType"]:checked').value
+    if (byClick = false) {
+        //var xToSend = x
+        var yToSend = y
+        x += 150
+        y += 150
+    } else {
+        //var xToSend = (x - 125)/ (80 / R)
+        var yToSend = (y - 125)/(-(80 / R))
+    }
+    if (!yValueCheck(yToSend)) {
+        alert('y has to be greater than -5 and less than 3!')
+    }
+    else {
+        const dot = document.createElementNS("http://www.w3.org/2000/svg", 'circle')
+        dot.setAttributeNS(null, 'cx', x);
+        dot.setAttributeNS(null, 'cy', y);
+        dot.setAttributeNS(null, 'class', "target-dot");
+        dot.setAttributeNS(null, 'r', 3);
+        dot.setAttributeNS(null, 'style', (isHit == true ? 'fill: green; stroke: black;' : 'fill: red; stroke: black;'));
+        svg.appendChild(dot);
+    }
 }
 
-svg.addEventListener('click', (event) => {
+/*svg.addEventListener('click', (event) => {
     let RInput = form.querySelector('input[name="RType"]:checked')
     let isRSet = RInput == null ? false : true
     if (isRSet) {
@@ -71,7 +97,7 @@ svg.addEventListener('click', (event) => {
 
 
     //alert('xType: ' + (svgx - 125)/20 + ', yType: ' + (svgy - 125) / (-20) + ', RType: ' + R)
-})
+})*/
 
 // function submitButton() {
 //     const submitButton = form.querySelector('#submitButton');

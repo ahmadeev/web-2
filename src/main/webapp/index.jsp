@@ -74,7 +74,7 @@
       <tbody>
       <jsp:useBean id="results" scope="application" class="beans.Results"/>
       <c:forEach var="hit" items="${results.getResults()}">
-        <tr>
+        <tr class="tableRow">
           <td class="result">${hit.getX()}</td>
           <td class="result">${hit.getY()}</td>
           <td class="result">${hit.getR()}</td>
@@ -95,13 +95,55 @@
     let submitButton = form.querySelector('#submitButton');
     submitButton.setAttribute("disabled", "")
 
-    const dots = document.querySelectorAll('.target-dot');
-    dots.forEach(dot => {dot.remove()})
+    $.ajax({
+      url: 'controller',
+      method: 'post',
+      dataType: 'html',
+      data: {'action':'clean'},
+      success: function(){
+        const dots = document.querySelectorAll('.target-dot');
+        dots.forEach(dot => {dot.remove()})
 
-    const results = document.querySelectorAll('.result');
-    results.forEach(result => {result.remove()})
+        const results = document.querySelectorAll('.result');
+        results.forEach(result => {result.remove()})
 
+        //alert(data);
+        //return $('html').html(data);
+      }
+    });
+  }
+</script>
+<script>
+  window.onload = function() {
+    let table = document.getElementById("resultTable")
+    let rows = table.querySelectorAll('.tableRow')
+    let lastR = parseInt((rows[rows.length - 1].querySelectorAll('.result'))[2].innerText)
 
+    rows.forEach((row) => {
+      if (row != null) {
+        var cells = row.querySelectorAll('.result')
+        //alert(cells[3].innerText)
+        //alert('meow')
+        //alert(cells[0].innerText + ' ' + cells[1].innerText + ' ' + cells[3].innerText)
+        //(parseFloat(cells[0].innerText) + ' ' + parseFloat(cells[1].innerText) + ' ' + (cells[3].innerText == 'true' ? true : false))
+        drawDotAfterRefresh(parseFloat(cells[0].innerText), parseFloat(cells[1].innerText), lastR, (cells[3].innerText == 'true' ? true : false), false)
+      }
+    })
+  }
+
+  function drawDotAfterRefresh(x, y, R, isHit, byClick) {
+    let svg = document.querySelector('svg')
+    x += 80 * x / R + 125
+    y += -80 * y / R + 125
+
+    const dot = document.createElementNS("http://www.w3.org/2000/svg", 'circle')
+    dot.setAttributeNS(null, 'cx', x);
+    dot.setAttributeNS(null, 'cy', y);
+    dot.setAttributeNS(null, 'class', "target-dot");
+    dot.setAttributeNS(null, 'r', 3);
+    dot.setAttributeNS(null, 'style', (isHit == true ? 'fill: green; stroke: black;' : 'fill: red; stroke: black;'));
+    svg.appendChild(dot);
+    //alert('точка')
   }
 </script>
 </body>
