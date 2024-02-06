@@ -145,6 +145,38 @@
     svg.appendChild(dot);
     //alert('точка')
   }
+
+  let svg = document.querySelector('svg')
+  let div = document.querySelector("#contentRight")
+
+  svg.addEventListener('click', (event) => {
+    let RInput = form.querySelector('input[name="RType"]:checked')
+    let isRSet = RInput == null ? false : true
+    if (isRSet) {
+        let R = RInput.value
+        var svgx = ((event.clientX - div.offsetLeft - 25) - 125) / (80 / R)
+        var svgy = ((event.clientY - div.offsetTop - 25) - 125) / (-80 / R)
+        //alert("x: " + svgx + ", y: " + svgy)
+
+        //drawDot(svgx, svgy, true)
+        if (yValueCheck(svgy)) {
+            var data = {'xType':svgx, 'yType':svgy, 'RType':R};
+            $.ajax({
+                url: 'controller',
+                method: 'post',
+                dataType: 'html',
+                data: data,
+                success: function(data){
+                    //alert(data);
+                    return $('html').html(data);
+                }
+            });
+        } else alert('y has to be greater than -5 and less than 3!')
+    } else alert('Должно быть передано значение R!')
+
+
+    //alert('xType: ' + (svgx - 125)/20 + ', yType: ' + (svgy - 125) / (-20) + ', RType: ' + R)
+  })
 </script>
 </body>
 </html>
