@@ -122,16 +122,14 @@
     rows.forEach((row) => {
       if (row != null) {
         var cells = row.querySelectorAll('.result')
-        //alert(cells[3].innerText)
-        //alert('meow')
         //alert(cells[0].innerText + ' ' + cells[1].innerText + ' ' + cells[3].innerText)
-        //(parseFloat(cells[0].innerText) + ' ' + parseFloat(cells[1].innerText) + ' ' + (cells[3].innerText == 'true' ? true : false))
-        drawDotAfterRefresh(parseFloat(cells[0].innerText), parseFloat(cells[1].innerText), lastR, (cells[3].innerText == 'true' ? true : false), false)
+        var REqualsLastR = parseInt(cells[2].innerText) == lastR ? true : false
+        drawDotAfterRefresh(parseFloat(cells[0].innerText), parseFloat(cells[1].innerText), lastR, (cells[3].innerText == 'true' ? true : false), REqualsLastR)
       }
     })
   }
 
-  function drawDotAfterRefresh(x, y, R, isHit, byClick) {
+  function drawDotAfterRefresh(x, y, R, isHit, isEqual) {
     let svg = document.querySelector('svg')
     x += 80 * x / R + 125
     y += -80 * y / R + 125
@@ -141,24 +139,36 @@
     dot.setAttributeNS(null, 'cy', y);
     dot.setAttributeNS(null, 'class', "target-dot");
     dot.setAttributeNS(null, 'r', 3);
-    dot.setAttributeNS(null, 'style', (isHit == true ? 'fill: green; stroke: black;' : 'fill: red; stroke: black;'));
+
+    if (isEqual) {
+      var dotColor = (isHit == true ? 'fill: green; stroke: black;' : 'fill: red; stroke: black;')
+    } else {
+      var dotColor = 'fill: white; stroke: black;'
+    }
+
+    dot.setAttributeNS(null, 'style', dotColor);
     svg.appendChild(dot);
-    //alert('точка')
   }
 
-  let svg = document.querySelector('svg')
-  let div = document.querySelector("#contentRight")
 
+</script>
+<script>
+  const svg = document.querySelector('svg')
+  const div = document.querySelector("#contentRight")
+  const offsetLeft = div.offsetLeft
+  const offsetTop = div.offsetTop
   svg.addEventListener('click', (event) => {
     let RInput = form.querySelector('input[name="RType"]:checked')
     let isRSet = RInput == null ? false : true
     if (isRSet) {
-        let R = RInput.value
-        var svgx = ((event.clientX - div.offsetLeft - 25) - 125) / (80 / R)
-        var svgy = ((event.clientY - div.offsetTop - 25) - 125) / (-80 / R)
-        //alert("x: " + svgx + ", y: " + svgy)
-
-        //drawDot(svgx, svgy, true)
+        let R = parseInt(RInput.value)
+        let svgx = ((event.clientX - offsetLeft - 25) - 125) / (80 / R)
+        //var svgy = ((event.clientY - div.offsetTop - 25) - 125) / (-80 / R)
+        let svgy = ((event.clientY - offsetTop - 25) - 125) / (-80 / R)
+        //alert(svgx + '\n' + svgy)
+        alert(event.clientY + "\n" + div.offsetTop)
+        alert((event.clientY - div.offsetTop - 25) + '\n' + svgy)
+        //alert()
         if (yValueCheck(svgy)) {
             var data = {'xType':svgx, 'yType':svgy, 'RType':R};
             $.ajax({
@@ -173,10 +183,14 @@
             });
         } else alert('y has to be greater than -5 and less than 3!')
     } else alert('Должно быть передано значение R!')
-
-
-    //alert('xType: ' + (svgx - 125)/20 + ', yType: ' + (svgy - 125) / (-20) + ', RType: ' + R)
   })
+</script>
+<script>
+/*  const tableBody = document.querySelector('tbody')
+  const rows = tableBody.querySelectorAll('tr')
+  rows.forEach(function(row) {
+    row.addEventListener("click", function() {alert('meow')})
+  })*/
 </script>
 </body>
 </html>

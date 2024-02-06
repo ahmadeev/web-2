@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Hit implements Serializable {
     private double x;
     private double y;
-    private int R;
+    private double R;
     private boolean result;
 
     public Hit() {
@@ -24,7 +24,7 @@ public class Hit implements Serializable {
         return y;
     }
 
-    public int getR() {
+    public double getR() {
         return R;
     }
 
@@ -40,7 +40,7 @@ public class Hit implements Serializable {
         this.y = y;
     }
 
-    public void setR(int r) {
+    public void setR(double r) {
         R = r;
     }
 

@@ -44,12 +44,12 @@ public class AreaCheckServlet extends HttpServlet {
 
         double x;
         double y;
-        int R;
+        double R;
 
         try {
             x = getDouble(request, "xType");
             y = getDouble(request, "yType");
-            R = Integer.parseInt(request.getParameter("RType"));
+            R = getDouble(request, "RType");
         } catch (NumberFormatException e) {
             throw new RuntimeException("Wrong type arguments!");
         }
@@ -57,15 +57,16 @@ public class AreaCheckServlet extends HttpServlet {
         Hit hit = new Hit();
         hit.setResult(isHit(x, y, R));
 
-        double scale = Math.pow(10, 2);
+        //double scale = Math.pow(10, 2);
 
-        x = Math.ceil(x * scale) / scale;
-        y = Math.ceil(y * scale) / scale;
+        //x = Math.ceil(x * scale) / scale;
+        //y = Math.ceil(y * scale) / scale;
 
 //        double scale = Math.pow(10, 2);
 //        x = x / scale + Math.ceil(x * scale % 10);
 //        y = y / scale + Math.ceil(y * scale % 10);
 
+        //hit.setResult(isHit(x, y, R));
         hit.setX(x);
         hit.setY(y);
         hit.setR(R);
@@ -83,17 +84,17 @@ public class AreaCheckServlet extends HttpServlet {
         return Double.parseDouble(parameter.replace(",", "."));
     }
 
-    private boolean isHit(double x, double y, int r) {
+    private boolean isHit(double x, double y, double r) {
         //Top-right
-        if (x >= 0 && y >= 0) {
+        if (x > 0 && y >= 0) {
             return (x * x + y * y) <= (r / 2) * (r / 2);
         }
         //Top-left
-        if (x < 0 && y >= 0) {
+        if (x <= 0 && y >= 0) {
             return (y <= r) && (x >= (-r) / 2);
         }
         //Bottom-left
-        if (x <= 0 && y < 0) {
+        if (x <= 0 && y <= 0) {
             return (y >= -x - r / 2);
         }
         //Bottom-right
