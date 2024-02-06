@@ -45,24 +45,30 @@ function drawDot(x, y, byClick) {
 }
 
 svg.addEventListener('click', (event) => {
-    var svgx = event.clientX - div.offsetLeft - 25
-    var svgy = event.clientY - div.offsetTop - 25
-    //alert("x: " + svgx + ", y: " + svgy)
-    let R = form.querySelector('input[name="RType"]:checked').value;
-    drawDot(svgx, svgy, true)
-    if (yValueCheck((svgy - 125)/(-(80 / R)))) {
-        var data = {'xType':(svgx - 125)/ (80 / R), 'yType':(svgy - 125)/(-(80 / R)), 'RType':R};
-        $.ajax({
-            url: 'controller',
-            method: 'post',
-            dataType: 'html',
-            data: data,
-            success: function(data){
-                alert(data);
-                return $('html').html(data);
-            }
-        });
-    }
+    let RInput = form.querySelector('input[name="RType"]:checked')
+    let isRSet = RInput == null ? false : true
+    if (isRSet) {
+        let R = RInput.value
+        var svgx = event.clientX - div.offsetLeft - 25
+        var svgy = event.clientY - div.offsetTop - 25
+        //alert("x: " + svgx + ", y: " + svgy)
+
+        drawDot(svgx, svgy, true)
+        if (yValueCheck((svgy - 125)/(-(80 / R)))) {
+            var data = {'xType':(svgx - 125)/ (80 / R), 'yType':(svgy - 125)/(-(80 / R)), 'RType':R};
+            $.ajax({
+                url: 'controller',
+                method: 'post',
+                dataType: 'html',
+                data: data,
+                success: function(data){
+                    //alert(data);
+                    return $('html').html(data);
+                }
+            });
+        }
+    } else alert('Должно быть передано значение R!')
+
 
     //alert('xType: ' + (svgx - 125)/20 + ', yType: ' + (svgy - 125) / (-20) + ', RType: ' + R)
 })

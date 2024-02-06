@@ -100,6 +100,8 @@
 
     const results = document.querySelectorAll('.result');
     results.forEach(result => {result.remove()})
+
+
   }
 </script>
 </body>
