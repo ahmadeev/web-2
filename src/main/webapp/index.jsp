@@ -15,9 +15,9 @@
   </div>
   <div class="mainContent">
     <div id="contentLeft">
-      <a href="controller">--1--</a><br>
-      <a href="areaCheck">--2--</a><br>
-      <a href="result.jsp">--0--</a>
+<%--      <a href="controller">--1--</a><br>--%>
+<%--      <a href="areaCheck">--2--</a><br>--%>
+<%--      <a href="result.jsp">--0--</a>--%>
       <form action="controller" method="post" id="form">
         <div class="formLine"><label>x value:</label></div>
         <div class="formLine">
@@ -117,6 +117,11 @@
   let table = document.getElementById("resultTable")
   let rows = table.querySelectorAll('.tableRow')
 
+  const svg1 = document.querySelectorAll('.min_R')
+  const svg2 = document.querySelectorAll('.min_half_R')
+  const svg3 = document.querySelectorAll('.R')
+  const svg4 = document.querySelectorAll('.half_R')
+
   function drawDotsAfterRefresh(rows, lastR) {
     rows.forEach((row) => {
       if (row != null) {
@@ -131,6 +136,13 @@
   window.onload = function() {
     let lastR = parseInt((rows[rows.length - 1].querySelectorAll('.result'))[2].innerText)
     drawDotsAfterRefresh(rows, lastR)
+
+    for(let i=0; i<2; i++) {
+      svg1[i].childNodes[0].nodeValue = '' + -lastR
+      svg2[i].childNodes[0].nodeValue = '' + -lastR / 2
+      svg3[i].childNodes[0].nodeValue = '' + lastR
+      svg4[i].childNodes[0].nodeValue = '' + lastR / 2
+    }
   }
 
   var radios = document.querySelectorAll('input[name="RType"]')
@@ -140,6 +152,13 @@
       dots.forEach(dot => {dot.remove()})
       let lastR = parseInt(radio.value)
       drawDotsAfterRefresh(rows, lastR)
+
+      for(let i=0; i<2; i++) {
+        svg1[i].childNodes[0].nodeValue = '' + -lastR
+        svg2[i].childNodes[0].nodeValue = '' + -lastR / 2
+        svg3[i].childNodes[0].nodeValue = '' + lastR
+        svg4[i].childNodes[0].nodeValue = '' + lastR / 2
+      }
     })
   })
 
@@ -194,7 +213,7 @@
                     return $('html').html(data);
                 }
             });
-        } else alert('y has to be greater than -5 and less than 3!')
+        } else alert('Значение y должно быть в пределах от -5 до 3!')
     } else alert('Должно быть передано значение R!')
   })
 </script>

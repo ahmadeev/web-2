@@ -32,16 +32,16 @@
     <path fill="white" fill-opacity="0.7" stroke="black" d="M 125, 125 L 125, 85 A 40, 40 90 0, 1 165, 125"></path>
 
     <g class="labels x-labels">
-        <text x="45" y="115">-R</text>
-        <text x="90" y="115">-R/2</text>
-        <text x="165" y="140">R/2</text>
-        <text x="205" y="140">R</text>
+        <text x="45" y="115" class="min_R">-R</text>
+        <text x="90" y="115" class="min_half_R">-R/2</text>
+        <text x="165" y="140" class="half_R">R/2</text>
+        <text x="205" y="140" class="R">R</text>
     </g>
     <g class="labels y-labels">
-        <text x="130" y="205">-R</text>
-        <text x="130" y="165">-R/2</text>
-        <text x="130" y="80">R/2</text>
-        <text x="130" y="40">R</text>
+        <text x="130" y="205" class="min_R">-R</text>
+        <text x="130" y="165" class="min_half_R">-R/2</text>
+        <text x="130" y="80" class="half_R">R/2</text>
+        <text x="130" y="40" class="R">R</text>
     </g>
     <g class="pridumaupozhe">
         <line stroke="black" x1="122" x2="128" y1="205" y2="205"></line>
