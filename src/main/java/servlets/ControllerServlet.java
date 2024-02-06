@@ -30,7 +30,7 @@ public class ControllerServlet extends HttpServlet {
         processRequest(request, response);
     }
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        //if (request.getParameter("action") == "clean") reqForwarding(request, response, "/CleanTableServlet");
 //        //принтер для теста
 //        response.setContentType("text/html");
 //        PrintWriter out = response.getWriter();

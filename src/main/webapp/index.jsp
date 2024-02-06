@@ -88,9 +88,6 @@
 <script src="js/validation.js"></script>
 <script src="js/graph.js"></script>
 <script>
-  alert('я родился')
-</script>
-<script>
   function disableButton() {
     let submitButton = form.querySelector('#submitButton');
     submitButton.setAttribute("disabled", "")
@@ -106,6 +103,13 @@
 
         const results = document.querySelectorAll('.result');
         results.forEach(result => {result.remove()})
+
+        for(let i=0; i<2; i++) {
+          svg1[i].childNodes[0].nodeValue = '-R'
+          svg2[i].childNodes[0].nodeValue = '-R/2'
+          svg3[i].childNodes[0].nodeValue = 'R'
+          svg4[i].childNodes[0].nodeValue = 'R/2'
+        }
 
         //alert(data);
         //return $('html').html(data);
