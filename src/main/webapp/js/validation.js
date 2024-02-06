@@ -25,7 +25,8 @@ function pupu() {
 }
 
 function yValueCheck(y) {
-    if (y != null && parseFloat(y) <= 3 && parseFloat(y) >= -5) return true
+    if (!isNaN(y) && y != null && parseFloat(y) <= 3 && parseFloat(y) >= -5) return true
+    //if (!isNaN(y.replace(",", ".")) && y != null && parseFloat(y) <= 3 && parseFloat(y) >= -5) return true
     else return false
 }
 

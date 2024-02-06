@@ -55,10 +55,20 @@ public class AreaCheckServlet extends HttpServlet {
         }
 
         Hit hit = new Hit();
+        hit.setResult(isHit(x, y, R));
+
+        double scale = Math.pow(10, 2);
+
+        x = Math.ceil(x * scale) / scale;
+        y = Math.ceil(y * scale) / scale;
+
+//        double scale = Math.pow(10, 2);
+//        x = x / scale + Math.ceil(x * scale % 10);
+//        y = y / scale + Math.ceil(y * scale % 10);
+
         hit.setX(x);
         hit.setY(y);
         hit.setR(R);
-        hit.setResult(isHit(x, y, R));
 
         results.getResults().add(hit);
         context.setAttribute("results", results);
