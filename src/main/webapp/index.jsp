@@ -114,22 +114,36 @@
   }
 </script>
 <script>
-  window.onload = function() {
-    let table = document.getElementById("resultTable")
-    let rows = table.querySelectorAll('.tableRow')
-    let lastR = parseInt((rows[rows.length - 1].querySelectorAll('.result'))[2].innerText)
+  let table = document.getElementById("resultTable")
+  let rows = table.querySelectorAll('.tableRow')
 
+  function drawDotsAfterRefresh(rows, lastR) {
     rows.forEach((row) => {
       if (row != null) {
         var cells = row.querySelectorAll('.result')
         //alert(cells[0].innerText + ' ' + cells[1].innerText + ' ' + cells[3].innerText)
         var REqualsLastR = parseInt(cells[2].innerText) == lastR ? true : false
-        drawDotAfterRefresh(parseFloat(cells[0].innerText), parseFloat(cells[1].innerText), lastR, (cells[3].innerText == 'true' ? true : false), REqualsLastR)
+        drawDot(parseFloat(cells[0].innerText), parseFloat(cells[1].innerText), lastR, (cells[3].innerText == 'true' ? true : false), REqualsLastR)
       }
     })
   }
 
-  function drawDotAfterRefresh(x, y, R, isHit, isEqual) {
+  window.onload = function() {
+    let lastR = parseInt((rows[rows.length - 1].querySelectorAll('.result'))[2].innerText)
+    drawDotsAfterRefresh(rows, lastR)
+  }
+
+  var radios = document.querySelectorAll('input[name="RType"]')
+  radios.forEach(function(radio) {
+    radio.addEventListener("click", function() {
+      const dots = document.querySelectorAll('.target-dot');
+      dots.forEach(dot => {dot.remove()})
+      let lastR = parseInt(radio.value)
+      drawDotsAfterRefresh(rows, lastR)
+    })
+  })
+
+  function drawDot(x, y, R, isHit, isEqual) {
     let svg = document.querySelector('svg')
     x += 80 * x / R + 125
     y += -80 * y / R + 125
@@ -149,7 +163,6 @@
     dot.setAttributeNS(null, 'style', dotColor);
     svg.appendChild(dot);
   }
-
 
 </script>
 <script>
