@@ -15,9 +15,10 @@
   </div>
   <div class="mainContent">
     <div id="contentLeft">
+<%--      <a href="result.jsp">--0--</a>--%>
 <%--      <a href="controller">--1--</a><br>--%>
 <%--      <a href="areaCheck">--2--</a><br>--%>
-<%--      <a href="result.jsp">--0--</a>--%>
+<%--      <a href="cleaner">--3--</a>--%>
       <form action="controller" method="post" id="form">
         <div class="formLine"><label>x value:</label></div>
         <div class="formLine">
@@ -95,7 +96,7 @@
     $.ajax({
       url: 'controller',
       method: 'post',
-      dataType: 'html',
+      //dataType: 'html',
       data: {'action':'clean'},
       success: function(){
         const dots = document.querySelectorAll('.target-dot');

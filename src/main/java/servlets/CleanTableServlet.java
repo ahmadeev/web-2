@@ -23,8 +23,9 @@ public class CleanTableServlet extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = getServletContext();
         //context.setAttribute("results", null);
-        Results results = new Results();
-        context.setAttribute("results", results);
+//        Results results = new Results();
+//        context.setAttribute("results", results);
+        if (context.getAttribute("results") != null) context.removeAttribute("results");
         context.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }
