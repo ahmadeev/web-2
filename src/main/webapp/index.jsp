@@ -203,8 +203,8 @@
         //var svgy = ((event.clientY - div.offsetTop - 25) - 125) / (-80 / R)
         let svgy = ((event.clientY - offsetTop - 25) - 125) / (-80 / R)
         //alert(svgx + '\n' + svgy)
-        alert(event.clientY + "\n" + div.offsetTop)
-        alert((event.clientY - div.offsetTop - 25) + '\n' + svgy)
+/*        alert(event.clientY + "\n" + div.offsetTop)
+        alert((event.clientY - div.offsetTop - 25) + '\n' + svgy)*/
         //alert()
         if (yValueCheck(svgy)) {
             var data = {'xType':svgx, 'yType':svgy, 'RType':R};
@@ -214,7 +214,7 @@
                 dataType: 'html',
                 data: data,
                 success: function(data){
-                    alert(data);
+                    //alert(data);
                     return $('body').html(data);
                 }
             });
