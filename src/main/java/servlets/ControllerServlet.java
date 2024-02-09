@@ -30,7 +30,7 @@ public class ControllerServlet extends HttpServlet {
         processRequest(request, response);
     }
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("action") == "clean") {
+        if ((request.getParameter("action") != null) && (request.getParameter("action") == "clean" || request.getParameter("action").equals("clean"))) {
             reqForwarding(request, response, "/cleaner");
             return;
         }
