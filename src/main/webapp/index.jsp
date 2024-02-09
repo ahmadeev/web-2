@@ -214,8 +214,8 @@
                 dataType: 'html',
                 data: data,
                 success: function(data){
-                    //alert(data);
-                    return $('html').html(data);
+                    alert(data);
+                    return $('body').html(data);
                 }
             });
         } else alert('Значение y должно быть в пределах от -5 до 3!')
