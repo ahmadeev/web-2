@@ -1,7 +1,6 @@
 package servlets;
 
 import beans.*;
-import utils.Point;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -10,11 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.DecimalFormat;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
 @WebServlet("/areaCheck")
 public class AreaCheckServlet extends HttpServlet {
@@ -27,17 +21,6 @@ public class AreaCheckServlet extends HttpServlet {
         processRequest(request, response);
     }
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        //принтер для теста
-//        response.setContentType("text/html");
-//        PrintWriter out = response.getWriter();
-//        out.println("<html><body>");
-//        out.println("<h1>" + "meow" + "</h1>");
-//        out.println("<p>x: " + request.getParameter("xType") + ", y: " + request.getParameter("yType") + ", R:  " + request.getParameter("RType") + "</p>");
-//        out.println("</body></html>");
-//        out.println("<a href=\"index.jsp\">back to main page</a>");
-//        out.close();
-
 
         ServletContext context = getServletContext();
         Results results = (Results) context.getAttribute("results");
@@ -62,11 +45,6 @@ public class AreaCheckServlet extends HttpServlet {
         x = Math.ceil(x * scale) / scale;
         y = Math.ceil(y * scale) / scale;
 
-//        double scale = Math.pow(10, 2);
-//        x = x / scale + Math.ceil(x * scale % 10);
-//        y = y / scale + Math.ceil(y * scale % 10);
-
-        //hit.setResult(isHit(x, y, R));
         hit.setX(x);
         hit.setY(y);
         hit.setR(R);

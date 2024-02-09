@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import static servlets.AreaCheckServlet.getDouble;
 import beans.Results;
@@ -34,39 +33,7 @@ public class ControllerServlet extends HttpServlet {
             reqForwarding(request, response, "/cleaner");
             return;
         }
-//        //принтер для теста
-//        response.setContentType("text/html");
-//        PrintWriter out = response.getWriter();
-//        out.println("<html><body>");
-//        out.println("<h1>" + request.getParameter("xType") + "</h1>");
-//        out.println("<h1>" + request.getParameter("yType") + "</h1>");
-//        out.println("<h1>" + request.getParameter("RType") + "</h1>");
-//        out.println("</body></html>");
-//        out.close();
 
-//        PrintWriter out = response.getWriter();
-//        out.println("<html><body>");
-//        if (request.getParameter("xType") != null && request.getParameter("yType") != null && request.getParameter("RType") != null) {
-//            if (getDouble(request, "yType") >= -5 && getDouble(request, "yType") <= 3) {
-//                out.println("<h1>" + request.getParameter("xType") + "</h1>");
-//                out.println("<h1>" + request.getParameter("yType") + "</h1>");
-//                out.println("<h1>" + request.getParameter("RType") + "</h1>");
-//                ServletContext servletContext = getServletContext();
-//                RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/areaCheck");
-//                requestDispatcher.forward(request, response);
-//            } else {
-//                out.println("<h1>" + request.getParameter("xType") + "</h1>");
-//                out.println("<h1>" + request.getParameter("yType") + "</h1>");
-//                out.println("<h1>" + request.getParameter("RType") + "</h1>");
-//                out.println("<h1>" + "тильт" + "</h1>");
-//            }
-//        } else {
-//            out.println("<h1>" + request.getParameter("xType") + "</h1>");
-//            out.println("<h1>" + request.getParameter("yType") + "</h1>");
-//            out.println("<h1>" + request.getParameter("RType") + "</h1>");
-//            out.println("<h1>" + "2" + "</h1>");
-//        }
-//        out.println("</body></html>");
         ServletContext context = getServletContext();
         if (context.getAttribute("results") == null) {
             getServletContext().setAttribute("results", results);
@@ -75,20 +42,11 @@ public class ControllerServlet extends HttpServlet {
         try {
             if (request.getParameter("xType") != null && request.getParameter("yType") != null && request.getParameter("RType") != null) {
                 if (getDouble(request, "yType") >= -5 && getDouble(request, "yType") <= 3) {
-//                    ServletContext servletContext = getServletContext();
-//                    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/areaCheck");
-//                    requestDispatcher.forward(request, response);
                     reqForwarding(request, response,"/areaCheck");
                 } else {
-//                    ServletContext servletContext = getServletContext();
-//                    RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/index.jsp");
-//                    requestDispatcher.forward(request, response);
                     reqForwarding(request, response,"/index.jsp");
                 }
             } else {
-//                ServletContext servletContext = getServletContext();
-//                RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher("/index.jsp");
-//                requestDispatcher.forward(request, response);
                 reqForwarding(request, response,"/index.jsp");
             }
         } catch (Exception e) {
