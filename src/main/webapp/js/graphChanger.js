@@ -60,7 +60,6 @@ function drawDotsAfterRefresh(rows, lastR) {
     rows.forEach((row) => {
         if (row != null) {
             var cells = row.querySelectorAll('.result')
-            //alert(cells[0].innerText + ' ' + cells[1].innerText + ' ' + cells[3].innerText)
             var REqualsLastR = parseInt(cells[2].innerText) == lastR ? true : false
             drawDot(parseFloat(cells[0].innerText), parseFloat(cells[1].innerText), lastR, (cells[3].innerText == 'true' ? true : false), REqualsLastR)
         }

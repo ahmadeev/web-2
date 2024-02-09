@@ -8,12 +8,7 @@ svg.addEventListener('click', (event) => {
     if (isRSet) {
         let R = parseInt(RInput.value)
         let svgx = ((event.clientX - offsetLeft - 25) - 125) / (80 / R)
-        //var svgy = ((event.clientY - div.offsetTop - 25) - 125) / (-80 / R)
         let svgy = ((event.clientY - offsetTop - 25) - 125) / (-80 / R)
-        //alert(svgx + '\n' + svgy)
-        /*        alert(event.clientY + "\n" + div.offsetTop)
-                alert((event.clientY - div.offsetTop - 25) + '\n' + svgy)*/
-        //alert()
         if (yValueCheck(svgy.toString())) {
             var data = {'xType':svgx, 'yType':svgy, 'RType':R};
             $.ajax({
@@ -22,7 +17,6 @@ svg.addEventListener('click', (event) => {
                 dataType: 'html',
                 data: data,
                 success: function(data){
-                    //alert(data);
                     return $('body').html(data);
                 }
             });

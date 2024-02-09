@@ -1,14 +1,3 @@
-/*function disableButton() {
-    var submitButton = form.querySelector('#submitButton');
-    submitButton.setAttribute("disabled", "")
-    //window.localStorage.clear()
-    for (var i = 1; i != stringCounter; i++) {
-        var table = document.getElementById('resultTable')
-        table.deleteRow(1)
-        stringCounter = 1
-        //window.localStorage.setItem('stringCounter', stringCounter)
-    }*/
-
 function pupu() {
     var submitButton = form.querySelector('#submitButton');
     var yInput = form.querySelector('[name="yType"]').value;
@@ -25,7 +14,6 @@ function pupu() {
 }
 
 function yValueCheck(y) {
-    //if (y != null && parseFloat(y) <= 3 && parseFloat(y) >= -5) return true
     if (!isNaN(y.replace(",", ".")) && y != null && parseFloat(y) <= 3 && parseFloat(y) >= -5) return true
     else return false
 }
