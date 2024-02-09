@@ -15,10 +15,6 @@
   </div>
   <div class="mainContent">
     <div id="contentLeft">
-<%--      <a href="result.jsp">--0--</a>--%>
-<%--      <a href="controller">--1--</a><br>--%>
-<%--      <a href="areaCheck">--2--</a><br>--%>
-<%--      <a href="cleaner">--3--</a>--%>
       <form action="controller" method="post" id="form">
         <div class="formLine"><label>x value:</label></div>
         <div class="formLine">
@@ -38,8 +34,7 @@
         </div>
         <div class="formLine"><label>y value:</label></div>
         <div class="formLine">
-
-          <input type="textbox" id="textingtext" name="yType" placeholder="-5 to 3" maxlength="10" autocomplete="off"> <!-- 17 -->
+          <input type="textbox" maxlength="10" id="textingtext" name="yType" placeholder="-5 to 3" autocomplete="off"> <!-- 17 -->
         </div>
         <div class="formLine"><label>R value:</label></div>
         <div class="formLine">
@@ -206,7 +201,7 @@
 /*        alert(event.clientY + "\n" + div.offsetTop)
         alert((event.clientY - div.offsetTop - 25) + '\n' + svgy)*/
         //alert()
-        if (yValueCheck(svgy)) {
+        if (yValueCheck(svgy.toString())) {
             var data = {'xType':svgx, 'yType':svgy, 'RType':R};
             $.ajax({
                 url: 'controller',
