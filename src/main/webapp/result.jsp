@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link rel="icon" href="assets/icon.png" type="image/png">
+    <link rel="icon" href="images/icon.png" type="image/png">
     <link rel="stylesheet" href="stylesheets/style.css">
     <title>result table</title>
 </head>
