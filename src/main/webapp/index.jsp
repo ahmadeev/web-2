@@ -30,14 +30,7 @@
 <script src="js/graph.js" defer></script>
 <script src="js/reset.js"></script>
 <script src="js/graphChanger.js"></script>
-
-<script>
-/*  const tableBody = document.querySelector('tbody')
-  const rows = tableBody.querySelectorAll('tr')
-  rows.forEach(function(row) {
-    row.addEventListener("click", function() {alert('meow')})
-  })*/
-</script>
+<script src="js/test.js" defer></script>
 
 </body>
 </html>
