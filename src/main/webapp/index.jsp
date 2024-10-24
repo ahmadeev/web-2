@@ -11,7 +11,7 @@
 <body>
 <div id="container">
   <div id="header">
-    <h2>Akhmadeev Danis P3209 #95730</h2>
+    <h2>Akhmadeev Danis P3309 #777</h2>
   </div>
   <div class="mainContent">
     <div id="contentLeft">
@@ -28,9 +28,10 @@
 
 <script src="js/validation.js"></script>
 <script src="js/graph.js" defer></script>
-<script src="js/reset.js"></script>
+<script src="js/reset_button_handler.js"></script>
 <script src="js/graphChanger.js"></script>
-<script src="js/test.js" defer></script>
+<script src="js/show_dot.js" defer></script>
+<script src="js/on_load.js" defer></script>
 
 </body>
 </html>

@@ -7,10 +7,10 @@ svg.addEventListener('click', (event) => {
     let isRSet = RInput == null ? false : true
     if (isRSet) {
         let R = parseInt(RInput.value)
-        let svgx = ((event.clientX - offsetLeft - 25) - 125) / (80 / R)
-        let svgy = ((event.clientY - offsetTop - 25) - 125) / (-80 / R)
-        if (yValueCheck(svgy.toString())) {
-            var data = {'xType':svgx, 'yType':svgy, 'RType':R};
+        let svg_x = ((event.clientX - offsetLeft - 25) - 125) / (80 / R)
+        let svg_y = ((event.clientY - offsetTop - 25) - 125) / (-80 / R)
+        if (yValueCheck(svg_y.toString())) {
+            var data = {'xType':svg_x, 'yType':svg_y, 'RType':R};
             $.ajax({
                 url: 'controller',
                 method: 'post',
