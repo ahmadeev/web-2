@@ -1,5 +1,5 @@
 function validateInputFields() {
-    var submitButton = form.querySelector('#submitButton');
+    var submitButton = form.querySelector('#submit_button');
     var yInput = form.querySelector('[name="yType"]').value;
     var RInput = form.querySelector('input[name="RType"]:checked').value;
 

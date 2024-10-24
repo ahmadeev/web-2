@@ -1,5 +1,5 @@
 const svg = document.querySelector('svg')
-const div = document.querySelector("#contentRight")
+const div = document.querySelector("#content_right")
 const offsetLeft = div.offsetLeft
 const offsetTop = div.offsetTop
 svg.addEventListener('click', (event) => {

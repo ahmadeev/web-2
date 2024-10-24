@@ -1,5 +1,5 @@
 function disableButton() {
-    let submitButton = form.querySelector('#submitButton');
+    let submitButton = form.querySelector('#submit_button');
     submitButton.setAttribute("disabled", "")
 
     $.ajax({

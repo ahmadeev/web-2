@@ -13,15 +13,15 @@
   <div id="header">
     <h2>Akhmadeev Danis P3309 #777</h2>
   </div>
-  <div class="mainContent">
-    <div id="contentLeft">
+  <div class="content_main">
+    <div id="content_left">
       <jsp:include page="jsp_pages/form.jsp" />
     </div>
-    <div id="contentRight">
+    <div id="content_right">
       <jsp:include page="jsp_pages/graph.jsp" />
     </div>
   </div>
-  <div id="contentCenter">
+  <div id="content_center">
     <jsp:include page="jsp_pages/result_table.jsp" />
   </div>
 </div>
@@ -29,7 +29,7 @@
 <script src="js/validation.js"></script>
 <script src="js/graph.js" defer></script>
 <script src="js/reset_button_handler.js"></script>
-<script src="js/graphChanger.js"></script>
+<script src="js/graph_changer.js"></script>
 <script src="js/show_dot.js" defer></script>
 <script src="js/on_load.js" defer></script>
 

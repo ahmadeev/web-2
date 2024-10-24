@@ -12,7 +12,7 @@
     <title>Results</title>
 </head>
 <body>
-<table align="center" id="resultTable">
+<table align="center" id="result_table">
   <thead>
   <tr>
     <th style="width:40px">x</th>
@@ -24,7 +24,7 @@
   <tbody>
   <jsp:useBean id="results" scope="application" class="beans.Results"/>
   <c:forEach var="hit" items="${results.getResults()}">
-    <tr class="tableRow">
+    <tr class="table_row">
       <td class="result">${hit.getX()}</td>
       <td class="result">${hit.getY()}</td>
       <td class="result">${hit.getR()}</td>

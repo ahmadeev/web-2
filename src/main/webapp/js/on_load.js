@@ -1,5 +1,5 @@
-let table = document.getElementById("resultTable")
-let rows = table.querySelectorAll('.tableRow')
+let table = document.getElementById("result_table")
+let rows = table.querySelectorAll('.table_row')
 
 const svg1 = document.querySelectorAll('.min_R')
 const svg2 = document.querySelectorAll('.min_half_R')

@@ -16,8 +16,8 @@
 <body>
 <div id="container">
     <div id="mainContent">
-        <div align="center" id="contentCenter">
-            <table align="center" id="resultTable">
+        <div align="center" id="content_center">
+            <table align="center" id="result_table">
                 <thead>
                 <tr>
                     <th style="width:40px">x</th>
