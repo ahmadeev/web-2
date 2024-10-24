@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static servlets.ControllerServlet.logger;
+
 @WebServlet("/areaCheck")
 public class AreaCheckServlet extends HttpServlet {
     @Override
@@ -20,7 +22,9 @@ public class AreaCheckServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
+
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        logger.info("\n----------------------------PROCESSING REQUEST START (/areaCheck)----------------------------");
 
         ServletContext context = getServletContext();
         Results results = (Results) context.getAttribute("results");
@@ -30,9 +34,9 @@ public class AreaCheckServlet extends HttpServlet {
         double R;
 
         try {
-            x = getDouble(request, "xType");
-            y = getDouble(request, "yType");
-            R = getDouble(request, "RType");
+            x = Double.parseDouble(request.getParameter("xType").replace(",", "."));
+            y = Double.parseDouble(request.getParameter("yType").replace(",", "."));
+            R = Double.parseDouble(request.getParameter("RType").replace(",", "."));
         } catch (NumberFormatException e) {
             throw new RuntimeException("Wrong type arguments!");
         }
@@ -55,11 +59,7 @@ public class AreaCheckServlet extends HttpServlet {
         request.setAttribute("results", context.getAttribute("results"));
         context.getRequestDispatcher("/result.jsp").forward(request, response);
 
-    }
-
-    public static double getDouble(HttpServletRequest request, String inputParameter) {
-        String parameter = request.getParameter(inputParameter);
-        return Double.parseDouble(parameter.replace(",", "."));
+        logger.info("\n----------------------------PROCESSING REQUEST END (/areaCheck)----------------------------");
     }
 
     private boolean isHit(double x, double y, double r) {
