@@ -35,25 +35,25 @@ public class ControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info("\n----------------------------GET REQUEST----------------------------");
+        logger.info("GET REQUEST (/controller)");
         processRequest(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info("\n----------------------------POST REQUEST----------------------------");
+        logger.info("POST REQUEST (/controller)");
         processRequest(request, response);
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info("\n----------------------------PROCESSING REQUEST START (/controller)----------------------------");
+        logger.info("PROCESSING REQUEST START (/controller)");
 
         ServletContext context = getServletContext();
 
         if ((request.getParameter("action") != null) && (request.getParameter("action") == "clean" || request.getParameter("action").equals("clean"))) {
             if (context.getAttribute("results") != null) context.removeAttribute("results");
             context.getRequestDispatcher("/index.jsp").forward(request, response);
-            logger.info("\nclean task");
-            logger.info("\n----------------------------PROCESSING REQUEST END (/controller)----------------------------");
+            logger.info("clean task");
+            logger.info("PROCESSING REQUEST END (/controller)");
 
             return;
         }
@@ -74,7 +74,7 @@ public class ControllerServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.toString());
         }
 
-        logger.info("\n----------------------------PROCESSING REQUEST END (/controller)----------------------------");
+        logger.info("PROCESSING REQUEST END (/controller)");
     }
 
     public static boolean isInputValid(HttpServletRequest request) {
@@ -86,7 +86,7 @@ public class ControllerServlet extends HttpServlet {
         boolean yb = y.compareTo(LOWER_VALID_Y) >= 0 && y.compareTo(HIGHER_VALID_Y) <= 0;
         boolean rb = r.compareTo(LOWER_VALID_R) >= 0 && r.compareTo(HIGHER_VALID_R) <= 0;
 
-        logger.info("\nis x valid? " + xb + "\nis y valid? " + yb + "\nis r valid? " + rb);
+        logger.info(String.format("isValid(x, y, r) : (%b, %b, %b)", xb, yb, rb));
         return xb && yb && rb;
     }
 }

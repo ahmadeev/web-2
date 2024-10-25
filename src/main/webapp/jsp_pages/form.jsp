@@ -36,7 +36,7 @@
 
     <div class="form_line"><label for="y_input">y value:</label></div>
     <div class="form_line">
-        <input type="text" maxlength="10" id="y_input" name="yType" placeholder="-5 to 3" autocomplete="off"> <!-- 17 -->
+        <input type="text" maxlength="10" id="y_input" name="yType" placeholder="-5 to 5" autocomplete="off"> <!-- 17 -->
     </div>
     <div class="form_line"><label>R value:</label></div>
     <div class="form_line">

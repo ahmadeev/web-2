@@ -16,15 +16,17 @@ import static servlets.ControllerServlet.logger;
 public class AreaCheckServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        logger.info("GET REQUEST (/areaCheck)");
         processRequest(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        logger.info("POST REQUEST (/areaCheck)");
         processRequest(request, response);
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info("\n----------------------------PROCESSING REQUEST START (/areaCheck)----------------------------");
+        logger.info("PROCESSING REQUEST START (/areaCheck)");
 
         ServletContext context = getServletContext();
         Results results = (Results) context.getAttribute("results");
@@ -59,7 +61,7 @@ public class AreaCheckServlet extends HttpServlet {
         request.setAttribute("results", context.getAttribute("results"));
         context.getRequestDispatcher("/result.jsp").forward(request, response);
 
-        logger.info("\n----------------------------PROCESSING REQUEST END (/areaCheck)----------------------------");
+        logger.info("PROCESSING REQUEST END (/areaCheck)");
     }
 
     private boolean isHit(double x, double y, double r) {
