@@ -1,3 +1,5 @@
+//  блокирует кнопку 'submit', отправляет запрос на очистку контекста, в случае успеха удаляет точки и строки таблицы
+//  срабатывает по нажатии на кнопку 'reset'
 function disableButton() {
     let submitButton = form.querySelector('#submit_button');
     submitButton.setAttribute("disabled", "")

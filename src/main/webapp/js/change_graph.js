@@ -1,3 +1,5 @@
+//  изменяет положение точек и текст лейблов
+//  срабатывает на изменение радиуса
 var radios = document.querySelectorAll('input[name="RType"]')
 radios.forEach(function(radio) {
     radio.addEventListener("click", function() {

@@ -1,3 +1,5 @@
+//  показывает выбранную в таблице точку на графике
+//  срабатывает по нажатии на строку таблицы
 let table_rows = document.getElementsByTagName('tr')
 let table_rows_length = table_rows.length
 let dots = document.getElementsByTagName('circle')

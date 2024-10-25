@@ -1,3 +1,5 @@
+//  проверка введенных значений, блокировка кнопки в случае невалидных
+//  срабатывает на изменение в форме, на ввод в поле y
 function validateInputFields() {
     var submitButton = form.querySelector('#submit_button');
     var yInput = form.querySelector('[name="yType"]').value;

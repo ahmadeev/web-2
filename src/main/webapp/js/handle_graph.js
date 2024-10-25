@@ -1,3 +1,5 @@
+//  отправляет запрос с координатами на сервер
+//  срабатывает по клику на график
 const svg = document.querySelector('svg')
 const div = document.querySelector("#content_right")
 const offsetLeft = div.offsetLeft
@@ -21,7 +23,7 @@ svg.addEventListener('click', (event) => {
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     console.log("Ошибка запроса:", textStatus, errorThrown);
-                    alert("meow")
+                    alert("ашипка")
 
                     if (jqXHR === 400) {
                         console.log("Ошибка 400: Неправильный запрос.");
