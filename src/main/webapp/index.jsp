@@ -27,10 +27,11 @@
 </div>
 
 <script src="js/validation.js"></script>
-<script src="js/graph.js" defer></script>
+<script src="js/handle_graph.js" defer></script>
 <script src="js/reset_button_handler.js"></script>
-<script src="js/graph_changer.js"></script>
+<script src="js/change_graph.js"></script>
 <script src="js/show_dot.js" defer></script>
+<script src="js/draw_graph.js" defer></script>
 <script src="js/on_load.js" defer></script>
 
 </body>

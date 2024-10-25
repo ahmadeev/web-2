@@ -1,6 +1,15 @@
 var radios = document.querySelectorAll('input[name="RType"]')
 radios.forEach(function(radio) {
     radio.addEventListener("click", function() {
+        console.log("Произошло изменение радиуса!")
+
+        const svg1 = document.querySelectorAll('.min_R')
+        const svg2 = document.querySelectorAll('.min_half_R')
+        const svg3 = document.querySelectorAll('.R')
+        const svg4 = document.querySelectorAll('.half_R')
+
+        const rows = document.getElementById("result_table").querySelectorAll('.table_row')
+
         const dots = document.querySelectorAll('.target-dot');
         dots.forEach(dot => {dot.remove()})
         let lastR = parseInt(radio.value)
@@ -12,6 +21,7 @@ radios.forEach(function(radio) {
             svg3[i].childNodes[0].nodeValue = '' + lastR
             svg4[i].childNodes[0].nodeValue = '' + lastR / 2
         }
+        console.log("Лейблы были перерисованы!")
     })
 })
 

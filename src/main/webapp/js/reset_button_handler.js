@@ -2,6 +2,11 @@ function disableButton() {
     let submitButton = form.querySelector('#submit_button');
     submitButton.setAttribute("disabled", "")
 
+    const svg1 = document.querySelectorAll('.min_R')
+    const svg2 = document.querySelectorAll('.min_half_R')
+    const svg3 = document.querySelectorAll('.R')
+    const svg4 = document.querySelectorAll('.half_R')
+
     $.ajax({
         url: 'controller',
         method: 'post',
