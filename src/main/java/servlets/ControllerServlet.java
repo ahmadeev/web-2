@@ -48,11 +48,9 @@ public class ControllerServlet extends HttpServlet {
         ServletContext context = getServletContext();
 
         if ((request.getParameter("action") != null) && (request.getParameter("action") == "clean" || request.getParameter("action").equals("clean"))) {
-
             if (context.getAttribute("results") != null) context.removeAttribute("results");
             context.getRequestDispatcher("/index.jsp").forward(request, response);
-
-            //context.getRequestDispatcher("/cleaner").forward(request, response);
+            logger.info("\nclean task\n----------------------------PROCESSING REQUEST END (/controller)----------------------------");
             return;
         }
 
@@ -64,10 +62,12 @@ public class ControllerServlet extends HttpServlet {
             if (isInputValid(request)) {
                 context.getRequestDispatcher("/areaCheck").forward(request, response);
             } else {
-                context.getRequestDispatcher("/index.jsp").forward(request, response);
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Bad Request");
+                // context.getRequestDispatcher("/index.jsp").forward(request, response);
             }
         } catch (Exception e) {
             logger.info(e.toString());
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.toString());
         }
 
         logger.info("\n----------------------------PROCESSING REQUEST END (/controller)----------------------------");
