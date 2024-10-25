@@ -8,7 +8,10 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static servlets.ControllerServlet.logger;
 
@@ -29,7 +32,8 @@ public class AreaCheckServlet extends HttpServlet {
         logger.info("PROCESSING REQUEST START (/areaCheck)");
 
         ServletContext context = getServletContext();
-        Results results = (Results) context.getAttribute("results");
+        HttpSession session = request.getSession();
+        ArrayList<Hit> results = (ArrayList<Hit>) session.getAttribute("results");
 
         double x;
         double y;
@@ -55,10 +59,10 @@ public class AreaCheckServlet extends HttpServlet {
         hit.setY(y);
         hit.setR(R);
 
-        results.getResults().add(hit);
-        context.setAttribute("results", results);
+        results.add(hit);
+        session.setAttribute("results", results);
         request.setAttribute("result", hit);
-        request.setAttribute("results", context.getAttribute("results"));
+        request.setAttribute("results", session.getAttribute("results"));
         context.getRequestDispatcher("/result.jsp").forward(request, response);
 
         logger.info("PROCESSING REQUEST END (/areaCheck)");

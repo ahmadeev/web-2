@@ -1,5 +1,6 @@
 package servlets;
 
+import beans.Hit;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,16 +9,16 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import beans.Results;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/controller")
 public class ControllerServlet extends HttpServlet {
     public static final Logger logger = Logger.getLogger(ControllerServlet.class.getName());
-
-    Results results;
 
     private static final BigDecimal LOWER_VALID_X = BigDecimal.valueOf(-3);
     private static final BigDecimal HIGHER_VALID_X = BigDecimal.valueOf(5);
@@ -29,7 +30,6 @@ public class ControllerServlet extends HttpServlet {
     private static final BigDecimal HIGHER_VALID_R = BigDecimal.valueOf(3);
 
     public ControllerServlet() {
-        results = new Results();
         logger.setLevel(Level.ALL);
     }
 
@@ -48,9 +48,11 @@ public class ControllerServlet extends HttpServlet {
         logger.info("PROCESSING REQUEST START (/controller)");
 
         ServletContext context = getServletContext();
+        HttpSession session = request.getSession();
+        ArrayList<Hit> results = new ArrayList<Hit>();
 
         if ((request.getParameter("action") != null) && (request.getParameter("action") == "clean" || request.getParameter("action").equals("clean"))) {
-            if (context.getAttribute("results") != null) context.removeAttribute("results");
+            if (session.getAttribute("results") != null) session.removeAttribute("results");
             context.getRequestDispatcher("/index.jsp").forward(request, response);
             logger.info("clean task");
             logger.info("PROCESSING REQUEST END (/controller)");
@@ -58,8 +60,8 @@ public class ControllerServlet extends HttpServlet {
             return;
         }
 
-        if (context.getAttribute("results") == null) {
-            getServletContext().setAttribute("results", results);
+        if (session.getAttribute("results") == null) {
+            session.setAttribute("results", results);
         }
 
         try {
@@ -67,7 +69,6 @@ public class ControllerServlet extends HttpServlet {
                 context.getRequestDispatcher("/areaCheck").forward(request, response);
             } else {
                 response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Bad Request");
-                // context.getRequestDispatcher("/index.jsp").forward(request, response);
             }
         } catch (Exception e) {
             logger.info(e.toString());
