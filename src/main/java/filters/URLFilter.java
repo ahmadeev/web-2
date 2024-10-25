@@ -21,7 +21,7 @@ public class URLFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         String path = httpRequest.getRequestURI();
 
-        if (path.endsWith(".css") || path.endsWith(".js") || path.endsWith("index.jsp") || path.endsWith("result.jsp") || path.endsWith("/controller")) {
+        if (path.endsWith(".js") || path.endsWith(".css") || path.endsWith(".png") || path.endsWith("index.jsp") || path.endsWith("controller")) {
             chain.doFilter(request, response);
         } else {
             request.setAttribute("path", path);
