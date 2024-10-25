@@ -2,14 +2,14 @@
 let polygon_points = {
     2: form_polygon_string([
         `${CENTER}, ${CENTER}`,
-        `${X_HALF_R}, ${CENTER}`,
-        `${CENTER}, ${Y_MINUS_R}`
+        `${X_MINUS_R}, ${CENTER}`,
+        `${CENTER}, ${Y_HALF_R}`
     ]),
     3: form_polygon_string([
         `${CENTER}, ${CENTER}`,
-        `${CENTER}, ${Y_MINUS_HALF_R}`,
-        `${X_MINUS_R}, ${Y_MINUS_HALF_R}`,
-        `${X_MINUS_R}, ${CENTER}`,
+        `${CENTER}, ${Y_MINUS_R}`,
+        `${X_MINUS_HALF_R}, ${Y_MINUS_R}`,
+        `${X_MINUS_HALF_R}, ${CENTER}`,
     ]),
 }
 

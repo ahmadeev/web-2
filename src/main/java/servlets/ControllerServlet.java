@@ -55,7 +55,6 @@ public class ControllerServlet extends HttpServlet {
             context.getRequestDispatcher("/index.jsp").forward(request, response);
             logger.info("clean task");
             logger.info("PROCESSING REQUEST END (/controller)");
-
             return;
         }
 
