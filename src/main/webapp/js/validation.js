@@ -1,25 +1,28 @@
 //  проверка введенных значений, блокировка кнопки в случае невалидных
 //  срабатывает на изменение в форме, на ввод в поле y
 function validateInputFields() {
-    var submitButton = form.querySelector('#submit_button');
-    var yInput = form.querySelector('[name="yType"]').value;
-    var RInput = form.querySelector('input[name="RType"]:checked').value;
+    let submitButton = form.querySelector('#submit_button');
+    let xInput = form.querySelector("[name='xType']").value
+    let yInput = form.querySelector('[name="yType"]').value;
+    let RInput = form.querySelector('input[name="RType"]:checked').value;
 
-    if (yValueCheck(yInput) && parseInt(RInput) != null) {
+    if (parseInt(xInput) != null && yValueCheck(yInput) && parseFloat(RInput) != null) {
         submitButton.removeAttribute("disabled");
     } else {
         submitButton.setAttribute("disabled", "");
     }
-    yInput = null;
-    RInput = null;
+    xInput = null
+    yInput = null
+    RInput = null
 }
 
 function yValueCheck(y) {
-    return !isNaN(y.replace(",", ".")) && parseFloat(y) <= 3 && parseFloat(y) >= -5;
+    return !isNaN(y.replace(",", ".")) && parseFloat(y) <= 5 && parseFloat(y) >= -5;
 }
 
 const form = document.getElementById("form")
-form.onchange = function() {validateInputFields()};
+form.onchange = function() {validateInputFields()}
+
 let yInput = form.querySelector('[name="yType"]')
 yInput.oninput = function() {
     validateInputFields();

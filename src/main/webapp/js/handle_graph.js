@@ -6,7 +6,7 @@ const offsetLeft = div.offsetLeft
 const offsetTop = div.offsetTop
 svg.addEventListener('click', (event) => {
     let RInput = form.querySelector('input[name="RType"]:checked')
-    let isRSet = RInput == null ? false : true
+    let isRSet = RInput != null
     if (isRSet) {
         let R = parseInt(RInput.value)
         let svg_x = ((event.clientX - offsetLeft - 25) - 125) / (80 / R)
@@ -15,7 +15,7 @@ svg.addEventListener('click', (event) => {
             var data = {'xType':svg_x, 'yType':svg_y, 'RType':R};
             $.ajax({
                 url: 'controller',
-                method: 'post',
+                method: 'get',
                 dataType: 'html',
                 data: data,
                 success: function(data){

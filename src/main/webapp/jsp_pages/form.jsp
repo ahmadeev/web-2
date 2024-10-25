@@ -11,34 +11,40 @@
     <title>Form component</title>
 </head>
 <body>
-<form action="controller" method="post" id="form">
+<form action="controller" method="get" id="form">
+
     <div class="form_line"><label for="x_input">x value:</label></div>
+    <input hidden id="x_input" value="" name="xType" />
+
     <div class="form_line">
-        <select id="x_input" name="xType">
-            <option value="-2">-2</option>
-            <option value="-1.5">-1.5</option>
-            <option value="-1">-1</option>
-
-            <option value="-0.5">-0.5</option>
-            <option value="0">0</option>
-            <option value="0.5">0.5</option>
-
-            <option value="1">1</option>
-            <option value="1.5">1.5</option>
-            <option value="2">2</option>
-        </select>
+        <input type="button" id="x_input_1" class="x_input" value="-3">
+        <input type="button" id="x_input_2" class="x_input" value="-2">
+        <input type="button" id="x_input_3" class="x_input" value="-1">
     </div>
+
+    <div class="form_line">
+        <input type="button" id="x_input_4" class="x_input" value="0">
+        <input type="button" id="x_input_5" class="x_input" value="1">
+        <input type="button" id="x_input_6" class="x_input" value="2">
+    </div>
+
+    <div class="form_line">
+        <input type="button" id="x_input_7" class="x_input" value="3">
+        <input type="button" id="x_input_8" class="x_input" value="4">
+        <input type="button" id="x_input_9" class="x_input" value="5">
+    </div>
+
     <div class="form_line"><label for="y_input">y value:</label></div>
     <div class="form_line">
         <input type="text" maxlength="10" id="y_input" name="yType" placeholder="-5 to 3" autocomplete="off"> <!-- 17 -->
     </div>
     <div class="form_line"><label>R value:</label></div>
     <div class="form_line">
-        <label><input type="radio" name="RType" value="1">1</label>
-        <label><input type="radio" name="RType" value="2">2</label>
-        <label><input type="radio" name="RType" value="3">3</label>
-        <label><input type="radio" name="RType" value="4">4</label>
-        <label><input type="radio" name="RType" value="5">5</label>
+        <label><input type="radio" name="RType" value="1.0">1.0</label>
+        <label><input type="radio" name="RType" value="1.5">1.5</label>
+        <label><input type="radio" name="RType" value="2.0">2.0</label>
+        <label><input type="radio" name="RType" value="2.5">2.5</label>
+        <label><input type="radio" name="RType" value="3.0">3.0</label>
     </div>
     <div class="form_line">
         <button type="submit" disabled="" id="submit_button" name="submit_button">Submit</button>

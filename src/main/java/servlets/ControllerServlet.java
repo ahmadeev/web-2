@@ -19,14 +19,14 @@ public class ControllerServlet extends HttpServlet {
 
     Results results;
 
-    private static final BigDecimal LOWER_VALID_X = BigDecimal.valueOf(-2);
-    private static final BigDecimal HIGHER_VALID_X = BigDecimal.valueOf(2);
+    private static final BigDecimal LOWER_VALID_X = BigDecimal.valueOf(-3);
+    private static final BigDecimal HIGHER_VALID_X = BigDecimal.valueOf(5);
 
     private static final BigDecimal LOWER_VALID_Y = BigDecimal.valueOf(-5);
-    private static final BigDecimal HIGHER_VALID_Y = BigDecimal.valueOf(3);
+    private static final BigDecimal HIGHER_VALID_Y = BigDecimal.valueOf(5);
 
     private static final BigDecimal LOWER_VALID_R = BigDecimal.valueOf(1);
-    private static final BigDecimal HIGHER_VALID_R = BigDecimal.valueOf(5);
+    private static final BigDecimal HIGHER_VALID_R = BigDecimal.valueOf(3);
 
     public ControllerServlet() {
         results = new Results();
@@ -35,10 +35,12 @@ public class ControllerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        logger.info("\n----------------------------GET REQUEST----------------------------");
         processRequest(request, response);
     }
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        logger.info("\n----------------------------POST REQUEST----------------------------");
         processRequest(request, response);
     }
 
@@ -50,7 +52,9 @@ public class ControllerServlet extends HttpServlet {
         if ((request.getParameter("action") != null) && (request.getParameter("action") == "clean" || request.getParameter("action").equals("clean"))) {
             if (context.getAttribute("results") != null) context.removeAttribute("results");
             context.getRequestDispatcher("/index.jsp").forward(request, response);
-            logger.info("\nclean task\n----------------------------PROCESSING REQUEST END (/controller)----------------------------");
+            logger.info("\nclean task");
+            logger.info("\n----------------------------PROCESSING REQUEST END (/controller)----------------------------");
+
             return;
         }
 

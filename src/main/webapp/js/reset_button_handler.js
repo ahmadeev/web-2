@@ -11,7 +11,7 @@ function disableButton() {
 
     $.ajax({
         url: 'controller',
-        method: 'post',
+        method: 'get',
         data: {'action':'clean'},
         success: function(){
             const dots = document.querySelectorAll('.target-dot');

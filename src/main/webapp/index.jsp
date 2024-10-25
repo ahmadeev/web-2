@@ -34,5 +34,15 @@
 <script src="js/draw_graph.js" defer></script>
 <script src="js/on_load.js" defer></script>
 
+<script>
+  $('.x_input').each(function(index, button) {
+    button.onclick = () => {
+      console.log("Клик по кнопке x!")
+      document.querySelector("input[name='xType']").value = button.value
+      console.log("Значение x успешно изменено на " + document.querySelector("input[name='xType']").value)
+    }
+  })
+</script>
+
 </body>
 </html>

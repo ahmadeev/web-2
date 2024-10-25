@@ -15,7 +15,7 @@ radios.forEach(function(radio) {
 
         const dots = document.querySelectorAll('.target-dot');
         dots.forEach(dot => {dot.remove()})
-        let lastR = parseInt(radio.value)
+        let lastR = parseFloat(radio.value)
         drawDotsAfterRefresh(rows, lastR)
 
         for(let i=0; i<2; i++) {
@@ -29,9 +29,12 @@ radios.forEach(function(radio) {
 })
 
 function drawDot(x, y, R, isHit, isEqual) {
+    const CENTER_CONST = 125
+    const R_CONST = 80
+
     let svg = document.querySelector('svg')
-    x += 80 * x / R + 125
-    y += -80 * y / R + 125
+    x += R_CONST * x / R + CENTER_CONST
+    y += -R_CONST * y / R + CENTER_CONST
 
     const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
     dot.setAttributeNS(null, 'cx', x);
@@ -39,7 +42,7 @@ function drawDot(x, y, R, isHit, isEqual) {
     dot.setAttributeNS(null, 'class', 'target-dot');
     dot.setAttributeNS(null, 'r', '3');
 
-    var dotColor
+    let dotColor
     if (isEqual) {
         dotColor = (isHit ? 'fill: green; stroke: black;' : 'fill: red; stroke: black;')
     } else {
