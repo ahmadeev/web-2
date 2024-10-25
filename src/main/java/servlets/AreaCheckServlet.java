@@ -11,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 @WebServlet("/areaCheck")
 public class AreaCheckServlet extends HttpServlet {
     public static final Logger logger = Logger.getLogger(AreaCheckServlet.class.getName());
+    public static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 
     public AreaCheckServlet() {
         logger.setLevel(Level.ALL);
@@ -37,6 +39,8 @@ public class AreaCheckServlet extends HttpServlet {
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("PROCESSING REQUEST START (/areaCheck)");
+
+        Long startTime = System.nanoTime();
 
         ServletContext context = getServletContext();
         HttpSession session = request.getSession();
@@ -65,6 +69,11 @@ public class AreaCheckServlet extends HttpServlet {
         hit.setX(x);
         hit.setY(y);
         hit.setR(R);
+        hit.setCurrentTime(sdf.format(System.currentTimeMillis()));
+
+        Long endTime = System.nanoTime();
+        hit.setScriptTime((endTime - startTime) / 1000);
+
 
         results.add(hit);
         session.setAttribute("results", results);

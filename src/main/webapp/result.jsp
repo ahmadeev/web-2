@@ -24,6 +24,8 @@
                     <th style="width:40px">y</th>
                     <th style="width:40px">R</th>
                     <th style="width:80px">Hit</th>
+                    <th style="width:80px">Time</th>
+                    <th style="width:80px">Done in (µs)</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -32,6 +34,8 @@
                     <td>${result.getY()}</td>
                     <td>${result.getR()}</td>
                     <td>${result.isResult()}</td>
+                    <td>${result.getCurrentTime()}</td>
+                    <td>${result.getScriptTime()}</td>
                 </tr>
                 </tbody>
             </table>

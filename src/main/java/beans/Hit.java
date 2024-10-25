@@ -6,12 +6,15 @@ package beans;
 //Бин переопределяет equals(), hashCode(), toString()
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Hit implements Serializable {
     private double x;
     private double y;
     private double R;
     private boolean result;
+    private String currentTime;
+    private Long scriptTime;    //  мкс
 
     public Hit() {
     }
@@ -48,6 +51,22 @@ public class Hit implements Serializable {
         this.result = result;
     }
 
+    public String getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(String currentTime) {
+        this.currentTime = currentTime;
+    }
+
+    public Long getScriptTime() {
+        return scriptTime;
+    }
+
+    public void setScriptTime(Long scriptTime) {
+        this.scriptTime = scriptTime;
+    }
+
     @Override
     public String toString() {
         return "Hit{" +
@@ -55,6 +74,8 @@ public class Hit implements Serializable {
                 ", y=" + y +
                 ", r=" + R +
                 ", result=" + result +
+                ", currentTime=" + currentTime +
+                ", scriptTime=" + scriptTime +
                 "}";
     }
 }

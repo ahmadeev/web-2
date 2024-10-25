@@ -14,6 +14,6 @@
     <h2>Упс! Страница недоступна.</h2>
     <p>Вероятно, адрес <b>не находится</b> в списке разрешенных для пользовательских запросов!</p>
     <p>${requestScope.path}</p>
-    <a href=<%=application.getContextPath() + "/index.jsp"%>>вернуться</a>
+    <a href=<%=application.getContextPath() + "/index.jsp"%>>Вернуться</a>
 </body>
 </html>

@@ -19,6 +19,8 @@
     <th style="width:40px">y</th>
     <th style="width:40px">R</th>
     <th style="width:80px">Hit</th>
+    <th style="width:80px">Time</th>
+    <th style="width:80px">Done in (µs)</th>
   </tr>
   </thead>
   <tbody>
@@ -28,6 +30,8 @@
       <td class="result">${hit.getY()}</td>
       <td class="result">${hit.getR()}</td>
       <td class="result">${hit.isResult()}</td>
+      <td class="result">${hit.getCurrentTime()}</td>
+      <td class="result">${hit.getScriptTime()}</td>
     </tr>
   </c:forEach>
   </tbody>
