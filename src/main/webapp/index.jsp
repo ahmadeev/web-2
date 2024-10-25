@@ -35,12 +35,16 @@
 <script src="js/on_load.js" defer></script>
 
 <script>
+  const DEFAULT_LABEL_TEXT = "x value: "
   $('.x_input').each(function(index, button) {
     button.onclick = () => {
       console.log("Клик по кнопке x!")
-      document.querySelector("input[name='xType']").value = button.value
+      let hidden_input = document.querySelector("input[name='xType']")
+      hidden_input.value = button.value
+      let button_value = hidden_input.value
       validateInputFields()
-      console.log("Значение x успешно изменено на " + document.querySelector("input[name='xType']").value)
+      document.getElementById("x_input_label").innerText = DEFAULT_LABEL_TEXT + button_value
+      console.log("Значение x успешно изменено на " + button_value)
     }
   })
 </script>

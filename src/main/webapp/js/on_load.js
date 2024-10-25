@@ -36,7 +36,7 @@ window.onload = function() {
     const svg4 = document.querySelectorAll('.half_R')
 
     if (rows.length > 0) {
-        let lastR = parseInt((rows[rows.length - 1].querySelectorAll('.result'))[2].innerText)
+        let lastR = parseFloat((rows[rows.length - 1].querySelectorAll('.result'))[2].innerText)
         drawDotsAfterRefresh(rows, lastR)
 
         for(let i=0; i<2; i++) {

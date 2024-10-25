@@ -13,7 +13,7 @@
 <body>
 <form action="controller" method="get" id="form">
 
-    <div class="form_line"><label for="x_input">x value:</label></div>
+    <div class="form_line"><label for="x_input" id="x_input_label">x value:</label></div>
     <input hidden id="x_input" value="null" name="xType" />
 
     <div class="form_line">
