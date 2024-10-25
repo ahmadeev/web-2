@@ -12,11 +12,18 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static servlets.ControllerServlet.logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @WebServlet("/areaCheck")
 public class AreaCheckServlet extends HttpServlet {
+    public static final Logger logger = Logger.getLogger(AreaCheckServlet.class.getName());
+
+    public AreaCheckServlet() {
+        logger.setLevel(Level.ALL);
+        logger.info("AreaCheckServlet init");
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info("GET REQUEST (/areaCheck)");

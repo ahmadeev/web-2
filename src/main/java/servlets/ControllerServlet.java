@@ -30,6 +30,7 @@ public class ControllerServlet extends HttpServlet {
 
     public ControllerServlet() {
         logger.setLevel(Level.ALL);
+        logger.info("ControllerServlet init");
     }
 
     @Override
