@@ -45,7 +45,7 @@ public class ControllerServlet extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info("PROCESSING REQUEST START (/controller)");
+        logger.info("<<<<<<<<<< PROCESSING REQUEST START (/controller)");
 
         ServletContext context = getServletContext();
         HttpSession session = request.getSession();
@@ -55,7 +55,7 @@ public class ControllerServlet extends HttpServlet {
             if (session.getAttribute("results") != null) session.removeAttribute("results");
             context.getRequestDispatcher("/index.jsp").forward(request, response);
             logger.info("clean task");
-            logger.info("PROCESSING REQUEST END (/controller)");
+            logger.info("PROCESSING REQUEST END (/controller) >>>>>>>>>>");
             return;
         }
 
@@ -74,7 +74,7 @@ public class ControllerServlet extends HttpServlet {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.toString());
         }
 
-        logger.info("PROCESSING REQUEST END (/controller)");
+        logger.info("PROCESSING REQUEST END (/controller) >>>>>>>>>>");
     }
 
     public static boolean isInputValid(HttpServletRequest request) {
