@@ -22,7 +22,6 @@
   </tr>
   </thead>
   <tbody>
-<%--  <jsp:useBean id="results" scope="application" class="beans.Results"/>--%>
   <c:forEach var="hit" items="${sessionScope.results}">
     <tr class="table_row">
       <td class="result">${hit.getX()}</td>

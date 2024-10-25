@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import beans.Results;
 import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/controller")
