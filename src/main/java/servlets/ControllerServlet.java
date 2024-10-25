@@ -50,6 +50,8 @@ public class ControllerServlet extends HttpServlet {
         HttpSession session = request.getSession();
         ArrayList<Hit> results = new ArrayList<Hit>();
 
+        logger.info(request.getRequestURI());
+
         if ((request.getParameter("action") != null) && (request.getParameter("action") == "clean" || request.getParameter("action").equals("clean"))) {
             if (session.getAttribute("results") != null) session.removeAttribute("results");
             context.getRequestDispatcher("/index.jsp").forward(request, response);

@@ -6,7 +6,7 @@ function validateInputFields() {
     let yInput = form.querySelector('[name="yType"]').value;
     let RInput = form.querySelector('input[name="RType"]:checked').value;
 
-    if (parseInt(xInput) != null && yValueCheck(yInput) && parseFloat(RInput) != null) {
+    if (xInput !== "null" && parseInt(xInput) != null && yValueCheck(yInput) && parseFloat(RInput) != null) {
         submitButton.removeAttribute("disabled");
     } else {
         submitButton.setAttribute("disabled", "");

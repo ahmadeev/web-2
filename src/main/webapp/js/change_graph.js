@@ -11,7 +11,6 @@ radios.forEach(function(radio) {
         const svg4 = document.querySelectorAll('.half_R')
 
         const rows = document.getElementById("result_table").querySelectorAll('.table_row')
-        console.log(rows)
 
         const dots = document.querySelectorAll('.target-dot');
         dots.forEach(dot => {dot.remove()})

@@ -39,6 +39,7 @@
     button.onclick = () => {
       console.log("Клик по кнопке x!")
       document.querySelector("input[name='xType']").value = button.value
+      validateInputFields()
       console.log("Значение x успешно изменено на " + document.querySelector("input[name='xType']").value)
     }
   })

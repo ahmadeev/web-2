@@ -35,13 +35,15 @@ window.onload = function() {
     const svg3 = document.querySelectorAll('.R')
     const svg4 = document.querySelectorAll('.half_R')
 
-    let lastR = parseInt((rows[rows.length - 1].querySelectorAll('.result'))[2].innerText)
-    drawDotsAfterRefresh(rows, lastR)
+    if (rows.length > 0) {
+        let lastR = parseInt((rows[rows.length - 1].querySelectorAll('.result'))[2].innerText)
+        drawDotsAfterRefresh(rows, lastR)
 
-    for(let i=0; i<2; i++) {
-        svg1[i].childNodes[0].nodeValue = '' + -lastR
-        svg2[i].childNodes[0].nodeValue = '' + -lastR / 2
-        svg3[i].childNodes[0].nodeValue = '' + lastR
-        svg4[i].childNodes[0].nodeValue = '' + lastR / 2
+        for(let i=0; i<2; i++) {
+            svg1[i].childNodes[0].nodeValue = '' + -lastR
+            svg2[i].childNodes[0].nodeValue = '' + -lastR / 2
+            svg3[i].childNodes[0].nodeValue = '' + lastR
+            svg4[i].childNodes[0].nodeValue = '' + lastR / 2
+        }
     }
 }

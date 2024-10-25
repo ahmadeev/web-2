@@ -14,7 +14,7 @@
 <form action="controller" method="get" id="form">
 
     <div class="form_line"><label for="x_input">x value:</label></div>
-    <input hidden id="x_input" value="" name="xType" />
+    <input hidden id="x_input" value="null" name="xType" />
 
     <div class="form_line">
         <input type="button" id="x_input_1" class="x_input" value="-3">
