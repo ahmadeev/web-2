@@ -15,8 +15,11 @@ function disableButton() {
             const dots = document.querySelectorAll('.target-dot');
             dots.forEach(dot => {dot.remove()})
 
-            const results = document.querySelectorAll('.result');
-            results.forEach(result => {result.remove()})
+            const columns = document.querySelectorAll('.result');
+            columns.forEach(column => {column.remove()})
+
+            const rows = document.querySelectorAll('.table_row');
+            rows.forEach(row => {row.remove()})
 
             for(let i=0; i<2; i++) {
                 svg1[i].childNodes[0].nodeValue = '-R'

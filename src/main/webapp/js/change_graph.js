@@ -9,6 +9,7 @@ radios.forEach(function(radio) {
         const svg4 = document.querySelectorAll('.half_R')
 
         const rows = document.getElementById("result_table").querySelectorAll('.table_row')
+        console.log(rows)
 
         const dots = document.querySelectorAll('.target-dot');
         dots.forEach(dot => {dot.remove()})
@@ -48,10 +49,11 @@ function drawDot(x, y, R, isHit, isEqual) {
 }
 
 function drawDotsAfterRefresh(rows, lastR) {
+    if (rows == null) return
     rows.forEach((row) => {
         if (row != null) {
-            var cells = row.querySelectorAll('.result')
-            var REqualsLastR = parseInt(cells[2].innerText) === lastR
+            let cells = row.querySelectorAll('.result')
+            let REqualsLastR = parseInt(cells[2].innerText) === lastR
             drawDot(parseFloat(cells[0].innerText), parseFloat(cells[1].innerText), lastR, (cells[3].innerText === 'true'), REqualsLastR)
         }
     })

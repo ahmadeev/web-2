@@ -18,6 +18,20 @@ svg.addEventListener('click', (event) => {
                 data: data,
                 success: function(data){
                     return $('body').html(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("Ошибка запроса:", textStatus, errorThrown);
+                    alert("meow")
+
+                    if (jqXHR === 400) {
+                        console.log("Ошибка 400: Неправильный запрос.");
+                    } else if (jqXHR.status === 404) {
+                        console.log("Ошибка 404: Ресурс не найден.");
+                    } else if (jqXHR.status === 500) {
+                        console.log("Ошибка 500: Внутренняя ошибка сервера.");
+                    } else {
+                        console.log("Произошла неизвестная ошибка.");
+                    }
                 }
             });
         } else alert('Значение y должно быть в пределах от -5 до 3!')
