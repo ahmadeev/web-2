@@ -78,6 +78,12 @@ form {
     height: 28px;
 }
 
+input[type="button"].x_input {
+    font-size: 10px;
+    width: 25px;
+    height: 25px;
+}
+
 .radio1 {
     width: 20px;
 
@@ -99,4 +105,8 @@ tr:hover > td {
 
 .label {
     font-size: small;
+}
+
+svg text {
+    font-size: 10px;
 }
